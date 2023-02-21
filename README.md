@@ -33,3 +33,6 @@ a. Same-Origin Policy and CORS
 b. Application to the internet
 - There are some websites that helps with hosting of NodeJS.e.g. Fly.io, Render, Replit, CodeSandBox, etc
 - For both Fly.io and Render, there is need to change the definition of the port the application uses at the bottom of the index.js file to 'const PORT = process.env.PORT || 3001' which is a port defined by the environmental variable or port 3001 (if the env'tal variable is ot available)
+
+# ONLINE APPLICATION LINK
+https://phonebook-backend-80gy.onrender.com/

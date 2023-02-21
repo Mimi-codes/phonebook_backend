@@ -87,6 +87,8 @@ app.delete('/api/persons/:id', (request, response) => {
 
 
 //receiving data
+//checks and throw an error if the name or number is missing
+//checks if name exists on the list
 app.post("/api/persons", (request, response) => {
   const body = request.body;
   const verify = persons.find((p) => p.name === body.name);
@@ -112,7 +114,8 @@ app.post("/api/persons", (request, response) => {
 });
 
 
-
+//port defined by the environmental variable 
+//uses port 3001 if environmental variable port is not available
   const PORT = process.env.PORT || 3001
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
