@@ -38,7 +38,7 @@ const personSchema = new mongoose.Schema({
     });
   }
   
-  //add new entries
+  //add and save new entries
   if (process.argv.length > 3) {
     const name = process.argv[3];
     const number = process.argv[4];

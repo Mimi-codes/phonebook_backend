@@ -57,7 +57,7 @@ app.delete("/api/persons/:id", (request, response, next) => {
     .catch((error) => next(error));
 });
 
-//creates new entry
+//creates and saves new entry
 app.post("/api/persons", (request, response, next) => {
   const { name, number } = request.body;
 
@@ -74,7 +74,7 @@ app.post("/api/persons", (request, response, next) => {
     .catch((error) => next(error));
 });
 
-//update the phone number of the existing entry 
+//update the phone number of the existing entry by id
 app.put("/api/persons/:id", (request, response, next) => {
   const { name, number } = request.body;
 
@@ -89,6 +89,7 @@ app.put("/api/persons/:id", (request, response, next) => {
     .catch((error) => next(error));
 });
 
+// handle requests with unknown endpoint
 const unknownEndpoint = (request, response) => {
   response.status(404).send({ error: "unknown endpoint" });
 };
@@ -107,9 +108,11 @@ const errorHandler = (error, request, response, next) => {
 
   next(error);
 };
+
 //error handling middleware
 app.use(errorHandler);
 
+//port defined with environmental variable
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

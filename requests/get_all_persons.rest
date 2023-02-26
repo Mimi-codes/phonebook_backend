@@ -1,3 +1,4 @@
+//gets all info from the list of phonebook entries
 ###
 GET http://localhost:3001/api/persons
 

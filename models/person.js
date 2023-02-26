@@ -1,10 +1,13 @@
-
+//this file contains the person.js database configuration into its own module
+//mongoose middleware
 const mongoose = require("mongoose");
 
+//stores the mongodb uri to connect to the mongo db database
 const url = process.env.MONGODB_URI;
 
 console.log("connecting to", url);
 
+//sets connection to the mongo db database
 mongoose
 .connect(url)
 .then(() => {
@@ -14,6 +17,7 @@ console.log("connected to MongoDB");
     console.log("error connecting to MongoDB:", error.message);
   });
 
+  //validates number entries of the phonebook
 const numberValidators = [
   {
     // Minimum length validator
@@ -34,6 +38,7 @@ const numberValidators = [
   },
 ];
 
+//specific validation rules for each field in the schema
 const personSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -47,6 +52,7 @@ const personSchema = new mongoose.Schema({
   },
 });
 
+//Modification using the toJSON method of the schema which prevents the return of objects of the mongo versioning field __v to the frontend returned by Mongoose 
 personSchema.set("toJSON", {
   transform: (document, returnedObject) => {
     returnedObject.id = returnedObject._id.toString();
@@ -55,4 +61,5 @@ personSchema.set("toJSON", {
   },
 });
 
+//sets value to the module.exports variable
 module.exports = mongoose.model("Person", personSchema);

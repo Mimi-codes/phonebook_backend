@@ -1,1 +1,2 @@
+//deletes from the list of phonebook entries
 DELETE http://localhost:3001/api/persons/2
