@@ -12,7 +12,7 @@ const password = process.argv[2]
 
 //for the data to be retrieved on mongo db, remove the angle brackets surrounding password in the url and replace the password with the database user password. Then run node mongo.js password in the CLI and view the data in browse collections on mongodb database deployment
 const url =
-  `mongodb+srv://phonebook:phonebookbackend@cluster0.g20gzso.mongodb.net/?retryWrites=true&w=majority`
+  `mongodb+srv://phonebook:<password>@cluster0.g20gzso.mongodb.net/?retryWrites=true&w=majority`
 
 mongoose.set('strictQuery', false)
 mongoose.connect(url)
